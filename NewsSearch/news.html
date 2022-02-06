@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News searcher</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <header class="header">
+        <nav class="nav">
+         <!--  <div class="icon">
+            <img class="img" src="assets/img/icono.png" alt="" />
+          </div> -->
+          <div class="title">
+            <h1 class="header__title">News searcher</h1>
+          </div>
+          <div class="header__link">
+            <a href="index.html" class="link">Inicio</a>
+          </div>
+        </nav>
+      </header>
+      <!-- SECTION -->
+      <section class="section">
+        <div class="options">
+          <select name="countries" id="countries"></select>
+          <button id="countrysearch" class="button">Buscar por país</button>
+          <input type="text" name="query" id="query" placeholder="Introducir tema"/>
+          <button id="search" class="button">Buscar por tema</button>
+          <select name="" id="lang"></select>
+          <button id="langsearch" class="button">Buscar por países en otros idiomas</button>
+          <button id="qsearch" class="button">Buscar por tema en otros idiomas</button>
+        </div>
+
+        <div class="articles" id="articles"></div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <p class="footer__text">
+          Página web realizada por Laura García Martínez. 2022.
+          <div class="rrss">
+            <a  href="#"><img class= "rs"src="assets/img/fb.png" alt=""></a>
+            <a  href="#"><img class= "rs" src="assets/img/twitter.png" alt=""></a>
+            <a href="#"><img  class= "rs"src="assets/img/instagram.png" alt=""></a>
+          </div>
+        </p>
+      </footer>
+    </div>
+    <script src="js/newsScript.js"></script>
+  </body>
+</html>
