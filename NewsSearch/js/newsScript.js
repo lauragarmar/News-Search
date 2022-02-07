@@ -1,6 +1,5 @@
 /* SELECTORES */
-
-let news = document.getElementById("news");
+/* let news = document.getElementById("news"); */
 let countries = document.getElementById("countries");
 let search = document.getElementById("search");
 let query = document.getElementById("query");
@@ -8,13 +7,15 @@ let articles = document.getElementById("articles");
 let lang=document.getElementById("lang")
 let langsearch=document.getElementById("langsearch")
 let qsearch=document.getElementById("qsearch")
+let contError=document.getElementById("contError")
+let textError=document.getElementById("textError")
 
 /*Getting a list of languages with their code using calendarific API*/
  const getLang=()=>{
   fetch("https://calendarific.com/api/v2/languages?api_key=c6c57e5fdda1aafd83ada5c4d57e0c0994714d5a")
   .then((response) => response.json())
   .then((responseJSON) => {
-    console.log(responseJSON);
+    //console.log(responseJSON);
     fillLangSelect(responseJSON)
   }); 
   } 
@@ -68,15 +69,19 @@ const getNewsbyCountry = (value) => {
     });
 };
 
+
+
 /*With this request I can get news with a key word (whichever word you want)included in the news
 For example: you can search news related to cities, football...*/
 const getNewsByQuery = (query) => {
+  
   fetch("https://gnews.io/api/v4/search?q="+query +"&token=6177714dc38454a9e5c276c04e3aa103&lang=es")
     .then((response) => response.json())
     .then((json) => {
       //console.log(json);
       mostrar(json)
     });
+ 
 };
 
 const getNewsByLang=(query, lang)=>{
@@ -93,6 +98,7 @@ fetch("https://gnews.io/api/v4/search?q="+query +"&token=6177714dc38454a9e5c276c
   //console.log(json.articles.length);
   articles.innerHTML=""
   query.value=""
+  contError.style.display="none"
   
   /*I create a for of loop to get each article and I create DOM elements to show the parts of the articles I am interested in*/
   /*Sometimes there are no articles for some searchs, so I make an if asking for the length of the array*/
@@ -121,9 +127,15 @@ fetch("https://gnews.io/api/v4/search?q="+query +"&token=6177714dc38454a9e5c276c
       description.innerHTML = art.description;
       description.className="descArt"
 
+      /*source*/
+      let source=document.createElement("p");
+      source.innerHTML="Fuente: "+art.source.name;
+
+
       /*appending to the container of the articles*/
       contArt.append(title)
       contArt.append(description)
+      contArt.append(source)
 
       generalCont.append(contImg)
       generalCont.append(contArt)
@@ -133,15 +145,20 @@ fetch("https://gnews.io/api/v4/search?q="+query +"&token=6177714dc38454a9e5c276c
     }
   } else {
     
-    alert("No hay artículos relacionados con el tema");
-
+    /* alert("No hay artículos relacionados con el tema"); */
+    contError.style.display="block"
+    textError.innerHTML="No hay artículos relacionados con el tema que estás buscando"
+    
   }
+  
+
 };
 
 /*Each time the page loads,we fill the selects*/ 
 document.addEventListener("DOMContentLoaded",()=>{
   getCountries()
   getLang()
+  contError.style.display="none"
 } );
 
 /*When we click the button "countrysearch" we make a call to the api with the value of the select of the countries*/
@@ -154,8 +171,13 @@ countrysearch.addEventListener("click", ()=>{
 /*When we click the search button, we make a call to the api with the text input value I called query*/
 search.addEventListener("click", ()=>{
   //console.log(countries.value)
-  //console.log(lang.value)
+  //console.log(lang.value)  
+   if(query.validity.valueMissing){
+    contError.style.display="block"
+    textError.innerHTML="Tienes que introducir un tema para realizar la búsqueda"
+  } else{
   getNewsByQuery(query.value)
+}
 })
 
 /*When we click the button langsearch, we make a call to the api searching news by countries and language*/

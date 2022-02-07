@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="body">
     <div class="container">
       <!-- HEADER -->
       <header class="header">
@@ -31,14 +31,17 @@
       </header>
       <!-- SECTION -->
       <section class="section">
+        <div id="contError" class="contError">
+          <p id="textError" class="textError"></p>
+        </div>
         <div class="options">
           <select name="countries" id="countries"></select>
           <button id="countrysearch" class="button">Buscar por país</button>
-          <input type="text" name="query" id="query" placeholder="Introducir tema"/>
+          <input type="text" name="query" id="query"  maxlength="15" required placeholder="Introducir tema..."/>
           <button id="search" class="button">Buscar por tema</button>
           <select name="" id="lang"></select>
-          <button id="langsearch" class="button">Buscar por países en otros idiomas</button>
-          <button id="qsearch" class="button">Buscar por tema en otros idiomas</button>
+          <button id="langsearch" class="button group">Buscar por países en otros idiomas</button>
+          <button id="qsearch" class="button group">Buscar por tema en otros idiomas</button>
         </div>
 
         <div class="articles" id="articles"></div>

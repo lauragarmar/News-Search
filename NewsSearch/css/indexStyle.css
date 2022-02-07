@@ -1,10 +1,14 @@
+.body{
+    background-color: #7795af;
+}
+
 /*GRID LAYOUT*/
 
 .container {
     display: grid;
     width: 100%;
-    max-width: 1200px;
-    margin: 10px auto;
+    /* max-width: 1200px;
+    margin: 10px auto; */
     display: grid;
     grid-template-columns: repeat(auto-fill, 1fr) 200px;
     grid-template-areas:
@@ -62,47 +66,123 @@
 .section {
     grid-area: section;
     background-color: #7795af;
+    height: 75vh; 
     display: flex;
-    justify-content: center;
+    justify-content: center;  
+    align-items: center;
 }
+
 
 .section__cont {
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border:1px solid black;
+    padding:20px;
+    width:700px; 
+    background-color:rgba(255, 255, 255, 0.692);
+    color:#42698c;
+    border:2px solid #fff;
+    border-radius:5px;
+    font-family: 'Roboto', sans-serif;
 }
 
-.text {}
 
 .section__link {
     text-decoration: none;
-    border: 1px solid #fff;
+    border: 1px solid #42698c;
     padding: 10px;
     border-radius: 5px 0px 5px 0px;
-    color: #42698c;
+    color: #fff;
     font-family: 'Arial';
     font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.568);
+    background-color: #42698c;
 }
 
 /*FOOTER*/
 
-.footer {
-    grid-area: footer;
+
+.footer{
+    grid-area:footer;
     display: flex;
     justify-content: space-around;
     align-items: baseline;
     /* border:2px solid orange; */
-    height: 50px;
-    background-color: #42698c;
-    color: #fff;
+    height:50px;
+    background-color: #42698c;	
+    color:#fff;
     font-family: Arial, Helvetica, sans-serif;
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    width:100%
 }
 
-.rrss {
+.rrss{
     display: flex;
-
+    
 }
 
-.rs {
+.rs{
     height: 40px;
-    width: 40px;
+    width:40px;
+}
+
+@media screen and (min-width:280px) and (max-width: 800px){
+   .header{
+       height: 130px;
+       margin-bottom: 20px;
+   }
+   
+    .nav{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+    }
+
+    .link{
+        font-weight: normal;
+        
+        
+    }
+
+    .section__cont{
+      font-size: 20px;
+      width:300px; 
+      margin: 80px;
+     
+    }
+    .rs{
+        height: 20px;
+        width:20px;
+    }
+
+    .footer__text{
+        font-size: 10px;
+    }
+}
+
+ @media screen and (min-width:768px) and (max-width: 1000px){ 
+ .header{
+     margin-bottom: 0px;
+ }
+ 
+    .section__cont{
+     width: 700px;
+     margin:0px;
+     font-size: 30px;
+     
+ }
+ .rs{
+    height: 30px;
+    width:30px;
+}
+
+ .footer__text{
+    font-size: 20px;
+}
+
 }
