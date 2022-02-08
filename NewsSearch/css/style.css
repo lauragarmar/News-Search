@@ -1,3 +1,4 @@
+
 /*GRID LAYOUT*/
 .body{
     background-image: url("../assets/img/lined_paper.png");
@@ -28,6 +29,8 @@
     
 }
 
+/*NAV*/
+
 .nav{
     display: flex;
     align-items: baseline;
@@ -41,7 +44,7 @@
 
 }
 
-/*link al inicio*/
+/*link to index*/
 .link{
     text-decoration:none;
     border: 1px solid #fff;
@@ -59,7 +62,7 @@
     
     
 }
-/*seccion para elegir las opciones de búsqueda*/
+/*section to choose the options of the search*/
 .options{
     grid-area: options;
     display:flex;
@@ -96,11 +99,25 @@
     border: 1px solid #6093ac;
 }
 
+/*Articles*/
+
+.urlArt{
+    text-decoration: none;
+    background-color: #6093ac;
+    color:white;
+    border: 1px solid #6093ac; 
+    width: 170px;
+    padding:10px;
+   
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
 .generalCont{
     display: flex;
-    justify-content: space-around;
+    justify-content:flex-start;
     margin:10px;
-   
+  /*  border:1px solid black */
 }
 
 @font-face {
@@ -116,12 +133,13 @@
     /* border:2px solid blue; */
     font-family: 'Times New Roman';
     padding:30px;
+
 }
 
 .artImg{
-    width:300px;
-    height:300px;
-    max-width :100%
+    width:200px;
+    height:200px;
+      
 }
 
 .contArt{
@@ -129,17 +147,47 @@
     text-align: left;
 }
 
+.contSection{
+    display: flex;
+    justify-content: center;
+}
+
+/*Errors message*/
 .contError{
     background-color:rgb(236, 108, 108);
     border: 2px solid red;
     color: red;
-
+    width: 30%;
+    padding:10px;
+   
 }
 
 .textError{
     text-align: center;
     font-weight: bold;
     font-size: large;
+}
+
+/*initial message*/
+.contInicio{
+    display: flex;
+    justify-content: center;
+}
+
+.inicio{
+    border:2px solid #42698c;
+    width: 30%;
+    padding:10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: #6093acbe;
+    color: #fff;
+    border-radius:5px;
+    margin:10px;
+}
+
+.text__inicio{
+    text-align: center;
 }
 
 /*FOOTER*/
@@ -157,11 +205,9 @@
     position:fixed;
     left:0px;
     bottom:0px;
-    width:100%
-    
-   
+    width:100%  
 }
-
+/*social media*/
 .rrss{
     display: flex;
     
@@ -171,6 +217,8 @@
     height: 40px;
     width:40px;
 }
+
+/*Responsive*/
 
 @media screen and (min-width:100px) and (max-width: 1200px){
     .nav{

@@ -1,3 +1,4 @@
+/*body*/
 .body{
     background-color: #7795af;
 }
@@ -35,7 +36,7 @@
     justify-content: space-around;
 }
 
-/*ICONO*/
+/*ICON*/
 .img {
     width: 40px;
     height: 40px;
@@ -49,7 +50,7 @@
 
 }
 
-/*link al inicio*/
+/*link to index*/
 .link {
     text-decoration: none;
     border: 1px solid #fff;
@@ -118,7 +119,7 @@
     bottom:0px;
     width:100%
 }
-
+/*social media*/
 .rrss{
     display: flex;
     
@@ -129,6 +130,7 @@
     width:40px;
 }
 
+/*responsive*/
 @media screen and (min-width:280px) and (max-width: 800px){
    .header{
        height: 130px;
@@ -161,7 +163,7 @@
     }
 
     .footer__text{
-        font-size: 10px;
+        font-size: 15px;
     }
 }
 

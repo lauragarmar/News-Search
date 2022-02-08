@@ -9,6 +9,7 @@ let langsearch=document.getElementById("langsearch")
 let qsearch=document.getElementById("qsearch")
 let contError=document.getElementById("contError")
 let textError=document.getElementById("textError")
+let inicio=document.getElementById("inicio")
 
 /*Getting a list of languages with their code using calendarific API*/
  const getLang=()=>{
@@ -84,6 +85,9 @@ const getNewsByQuery = (query) => {
  
 };
 
+/*With this request I get news with a key word, which can be a country, city, or any subject getting 
+news in the selected language, if it exists*/
+
 const getNewsByLang=(query, lang)=>{
 fetch("https://gnews.io/api/v4/search?q="+query +"&token=6177714dc38454a9e5c276c04e3aa103&lang="+lang)
 .then((response) => response.json())
@@ -96,12 +100,22 @@ fetch("https://gnews.io/api/v4/search?q="+query +"&token=6177714dc38454a9e5c276c
 /*Function with which I show the articles in the HTML*/
  const mostrar = (json) => {
   //console.log(json.articles.length);
+  
+  /*I put the value of the query empty so when I search again 
+  the input is empty and I don't have to erase the content
+  
+  I don't show neither the errors nor the initial message*/
+ 
   articles.innerHTML=""
   query.value=""
   contError.style.display="none"
+  inicio.style.display="none"
   
-  /*I create a for of loop to get each article and I create DOM elements to show the parts of the articles I am interested in*/
-  /*Sometimes there are no articles for some searchs, so I make an if asking for the length of the array*/
+  /*I create a for of loop to get each article and I create DOM elements to show the parts of the articles 
+  I am interested in*/
+  /*Sometimes there are no articles for some searchs, so I make an if asking for the length of the array
+  if the length is 0, then there are no articles.*/
+
   if (json.articles.length != 0) {
     
     for (art of json.articles) {
@@ -131,11 +145,18 @@ fetch("https://gnews.io/api/v4/search?q="+query +"&token=6177714dc38454a9e5c276c
       let source=document.createElement("p");
       source.innerHTML="Fuente: "+art.source.name;
 
+      /*link*/
+      let url=document.createElement("a")
+      url.href=art.url;
+      url.innerHTML="Link a la página"
+      url.className="urlArt"
+
 
       /*appending to the container of the articles*/
       contArt.append(title)
       contArt.append(description)
       contArt.append(source)
+      contArt.append(url)
 
       generalCont.append(contImg)
       generalCont.append(contArt)
@@ -145,7 +166,8 @@ fetch("https://gnews.io/api/v4/search?q="+query +"&token=6177714dc38454a9e5c276c
     }
   } else {
     
-    /* alert("No hay artículos relacionados con el tema"); */
+    /*We show the errors*/
+    // alert("No hay artículos relacionados con el tema"); 
     contError.style.display="block"
     textError.innerHTML="No hay artículos relacionados con el tema que estás buscando"
     
@@ -159,9 +181,11 @@ document.addEventListener("DOMContentLoaded",()=>{
   getCountries()
   getLang()
   contError.style.display="none"
+  inicio.style.display="block"
 } );
 
-/*When we click the button "countrysearch" we make a call to the api with the value of the select of the countries*/
+/*When we click the button "countrysearch" we make a call to the api with the value
+ of the select of the countries*/
 countrysearch.addEventListener("click", ()=>{
   //console.log(countries.value)
   //console.log(lang.value)
@@ -185,7 +209,8 @@ langsearch.addEventListener("click", ()=>{
   getNewsByLang(countries.value, lang.value)
 })
 
-/*When we click the button qsearch, we make a call to the api searching news by the query we get with the input text value and language*/
+/*When we click the button qsearch, we make a call to the api searching news by the query
+ we get with the input text value and language*/
 qsearch.addEventListener("click", ()=>{
   getNewsByLang(query.value, lang.value)
 })
